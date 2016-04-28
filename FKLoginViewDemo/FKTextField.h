@@ -49,6 +49,8 @@
 
 @property (strong, nonatomic) UIFont  *placeHolderFont;
 
+@property (assign, nonatomic) CGFloat placeHolderAlpha;
+
 #pragma mark - Animation
 /**
  *  默认为0.3s

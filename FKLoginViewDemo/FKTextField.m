@@ -59,6 +59,8 @@ static CGFloat const kPlaceHolderLabelContractScale  = 0.7f;
     self.placeHolderAnimationDuration = 0.3f;
     self.lineDismissDuration = 0.8f;
     
+    self.placeHolderAlpha = 1.0f;
+    
     [[NSNotificationCenter defaultCenter]
      addObserverForName:UITextFieldTextDidBeginEditingNotification
      object:self
@@ -227,6 +229,8 @@ static CGFloat const kPlaceHolderLabelContractScale  = 0.7f;
                                                 - kPlaceHolderLabelOffset);
     
     self.placeHolderLabel.center = self.placeHolderDefaultCenter;
+    
+    self.placeHolderLabel.text = self.placeholder;
 }
 
 #pragma mark - setter and getter
@@ -258,6 +262,7 @@ static CGFloat const kPlaceHolderLabelContractScale  = 0.7f;
         _placeHolderLabel.text = self.placeholder;
         _placeHolderLabel.textColor = self.idlePlaceHolderColor?:self.idleLineColor;
         _placeHolderLabel.font = self.placeHolderFont;
+        _placeHolderLabel.alpha = self.placeHolderAlpha;
     }
     return _placeHolderLabel;
 }
@@ -280,6 +285,15 @@ static CGFloat const kPlaceHolderLabelContractScale  = 0.7f;
                                      self.frame.size.height - self.lineHeight,
                                      lineViewFrame.size.width,
                                      lineHeight);
+}
+
+- (void)setPlaceHolderAlpha:(CGFloat)placeHolderAlpha
+{
+    if (_placeHolderAlpha == placeHolderAlpha)
+    {
+        return;
+    }
+    self.placeHolderLabel.alpha = placeHolderAlpha;
 }
 
 @end
